@@ -9,14 +9,42 @@ export default function Form() {
   const [imc, setImc] = useState(null);
   const [textButton, setTextButton] = useState('Calculate');
 
+  const imcCalculator = () => {
+    return setImc((weight / (height * height)).toFixed(2));
+  };
+
+  const validateIMC = () => {
+    if (height != null && weight != null) {
+      imcCalculator();
+      setHeight(null);
+      setWeight(null);
+      setMessageImc(`Your BMI equals to: `);
+      setTextButton('Calculate again');
+      return;
+    }
+    setImc(null);
+    setTextButton('Calculate');
+    setMessageImc('Fill your weight and height');
+  };
+
   return (
     <View>
       <View>
         <Text>Altura</Text>
-        <TextInput placeholder="Ex: 1.75" keyboardType="numeric" />
+        <TextInput
+          onChangeText={setHeight}
+          value={height}
+          placeholder="Ex: 1.75"
+          keyboardType="numeric"
+        />
         <Text>Peso</Text>
-        <TextInput placeholder="Ex: 80.5kg" keyboardType="numeric" />
-        <Button title="Calculate my BMI" />
+        <TextInput
+          onChangeText={setWeight}
+          value={weight}
+          placeholder="Ex: 80.5kg"
+          keyboardType="numeric"
+        />
+        <Button onPress={() => validateIMC()} title={textButton} />
       </View>
       <ResultIMC messageResultImc={messageImc} resultImc={imc} />
     </View>
