@@ -6,9 +6,9 @@ export default function Form() {
     <View>
       <View>
         <Text>Altura</Text>
-        <TextInput placeholder="Ex: 1.75" KeyboardType="numeric" />
+        <TextInput placeholder="Ex: 1.75" keyboardType="numeric" />
         <Text>Peso</Text>
-        <TextInput placeholder="Ex: 80.5kg" KeyboardType="numeric" />
+        <TextInput placeholder="Ex: 80.5kg" keyboardType="numeric" />
       </View>
     </View>
   );
