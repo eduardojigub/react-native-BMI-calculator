@@ -2,22 +2,17 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   formContext: {
-    width: '100%', // ocupa 100% de largura da tela,
-    height: '100%', //ocupa 100% de altura da tela
-    justifyContent: 'space-around',
-    bottom: 0, //pra ir até o final da tela
+    flex: 1,
+    margintTop: 30,
     backgroundColor: '#ffffff',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     alignItems: 'center',
-    marginTop: 20,
-    paddingTop: 15,
+    paddingTop: 30,
   },
   form: {
     width: '100%',
     height: 'auto', //conforme novos componentes são adicionados, ele automatiza o processo de posicionamento
-    marginTop: 30,
-    padding: 10,
   },
   formLabel: {
     color: '#000000',
@@ -52,6 +47,10 @@ const styles = StyleSheet.create({
     color: 'red',
     fontWeight: 'bold',
     paddingLeft: 20,
+  },
+  exhibitionResultIMC: {
+    width: '100%',
+    height: '50%',
   },
 });
 
