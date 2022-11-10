@@ -4,12 +4,14 @@ const styles = StyleSheet.create({
   formContext: {
     width: '100%', // ocupa 100% de largura da tela,
     height: '100%', //ocupa 100% de altura da tela
+    justifyContent: 'space-around',
     bottom: 0, //pra ir até o final da tela
     backgroundColor: '#ffffff',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     alignItems: 'center',
-    marginTop: 30,
+    marginTop: 20,
+    paddingTop: 15,
   },
   form: {
     width: '100%',
