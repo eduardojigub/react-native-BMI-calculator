@@ -7,6 +7,7 @@ import {
   Vibration,
   Pressable,
   Keyboard,
+  FlatList,
 } from 'react-native';
 import ResultIMC from '../ResultIMC';
 import styles from './style';
@@ -18,10 +19,13 @@ export default function Form() {
   const [imc, setImc] = useState(null);
   const [textButton, setTextButton] = useState('Calculate');
   const [errorMessage, setErrorMessage] = useState(null);
+  const [imcList, setImcList] = useState([]);
 
   const imcCalculator = () => {
     let heightFormat = height.replace(',', '.');
-    return setImc((weight / (heightFormat * heightFormat)).toFixed(2));
+    let totalImc = (weight / (heightFormat * heightFormat)).toFixed(2);
+    setImcList((arr) => [...arr, { id: new Date().getTime(), imc: totalImc }]);
+    setImc(totalImc);
   };
 
   const imcVerify = () => {
@@ -87,6 +91,22 @@ export default function Form() {
           </TouchableOpacity>
         </View>
       )}
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        style={styles.listImcs}
+        data={imcList.reverse()}
+        renderItem={({ item }) => {
+          return (
+            <Text style={styles.resultImcItem}>
+              <Text style={styles.textResultItemList}>BMI Result = </Text>
+              {item.imc}
+            </Text>
+          );
+        }}
+        keyExtractor={(item) => {
+          item.id;
+        }}
+      />
     </View>
   );
 }
